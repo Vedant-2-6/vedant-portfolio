@@ -189,6 +189,38 @@ const ProjectsOutput = () => (
   </motion.div>
 );
 
+const ContactOutput = () => (
+  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="my-4 p-5 bg-gradient-to-br from-[#0f1115] to-[#0a0a0a] border border-gray-800 rounded-lg shadow-lg relative overflow-hidden group">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-3xl group-hover:bg-green-500/10 transition-colors"></div>
+    <h3 className="text-gray-300 font-bold mb-6 flex items-center gap-2 text-lg relative z-10">
+      <span className="text-green-500 animate-pulse">●</span> Establish Connection
+    </h3>
+    <div className="space-y-4 font-mono text-sm relative z-10">
+      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 group/item">
+        <span className="text-gray-500 w-20">Email</span>
+        <a href="mailto:vedantpatelvp04@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors bg-blue-900/10 px-3 py-2 rounded-md border border-blue-900/30 flex-1 flex items-center justify-between">
+          vedantpatelvp04@gmail.com
+          <span className="text-[10px] text-blue-500/50 group-hover/item:text-blue-400 opacity-0 group-hover/item:opacity-100 transition-opacity tracking-widest">SEND_PACKET</span>
+        </a>
+      </div>
+      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 group/item">
+        <span className="text-gray-500 w-20">LinkedIn</span>
+        <a href="https://linkedin.com/in/vedantpatel" target="_blank" rel="noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors bg-blue-900/10 px-3 py-2 rounded-md border border-blue-900/30 flex-1 flex items-center justify-between">
+          /in/vedantpatel
+          <span className="text-[10px] text-blue-500/50 group-hover/item:text-blue-400 opacity-0 group-hover/item:opacity-100 transition-opacity tracking-widest">ESTABLISH_HANDSHAKE</span>
+        </a>
+      </div>
+      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 group/item">
+        <span className="text-gray-500 w-20">GitHub</span>
+        <a href="https://github.com/Vedant-2-6" target="_blank" rel="noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors bg-blue-900/10 px-3 py-2 rounded-md border border-blue-900/30 flex-1 flex items-center justify-between">
+          github.com/Vedant-2-6
+          <span className="text-[10px] text-blue-500/50 group-hover/item:text-blue-400 opacity-0 group-hover/item:opacity-100 transition-opacity tracking-widest">CLONE_REPO</span>
+        </a>
+      </div>
+    </div>
+  </motion.div>
+);
+
 // Magnetic Button Component
 const MagneticButton = ({ children, onClick }) => {
   const btnRef = useRef(null);
@@ -224,7 +256,7 @@ const MagneticButton = ({ children, onClick }) => {
 export default function Terminal({ setMatrix, setGlitching }) {
   const [history, setHistory] = useState([
     { type: 'system', content: 'Kernel loaded. VedantOS v2.0 running.' },
-    { type: 'system', content: 'Try "about", "skills", "experience", or "projects".' }
+    { type: 'system', content: 'Try "about", "skills", "experience", "projects", or "contact".' }
   ]);
   const [input, setInput] = useState('');
   const endRef = useRef(null);
@@ -251,7 +283,7 @@ export default function Terminal({ setMatrix, setGlitching }) {
     
     switch (cmd) {
       case 'help':
-        newHistory.push({ type: 'output', component: <div className="text-gray-300 my-2 bg-gray-900/50 p-3 rounded-md border border-gray-800 font-sans text-sm">Available Modules: <span className="text-green-400 font-mono font-bold">about, skills, experience, projects, clear</span></div> });
+        newHistory.push({ type: 'output', component: <div className="text-gray-300 my-2 bg-gray-900/50 p-3 rounded-md border border-gray-800 font-sans text-sm">Available Modules: <span className="text-green-400 font-mono font-bold">about, skills, experience, projects, contact, clear</span></div> });
         break;
       case 'about':
         newHistory.push({ type: 'output', component: <AboutOutput /> });
@@ -265,6 +297,9 @@ export default function Terminal({ setMatrix, setGlitching }) {
         break;
       case 'projects':
         newHistory.push({ type: 'output', component: <ProjectsOutput /> });
+        break;
+      case 'contact':
+        newHistory.push({ type: 'output', component: <ContactOutput /> });
         break;
       case 'clear':
         setHistory([]);
@@ -319,7 +354,7 @@ export default function Terminal({ setMatrix, setGlitching }) {
 
         <div className="space-y-2 flex-grow relative z-10 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-800">
           <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2 px-2 pointer-events-none">Executable Scripts</p>
-          {['about', 'skills', 'experience', 'projects'].map(cmd => (
+          {['about', 'skills', 'experience', 'projects', 'contact'].map(cmd => (
             <MagneticButton key={cmd} onClick={() => executeCommand(cmd)}>
               <Play size={12} className="text-gray-600 transition-colors" />
               ./{cmd}.sh
