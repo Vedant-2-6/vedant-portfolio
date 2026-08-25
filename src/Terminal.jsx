@@ -119,8 +119,8 @@ const AboutOutput = () => (
     <p className="text-gray-300 leading-relaxed text-sm md:text-base font-sans">{CV.about.text}</p>
     <div className="flex gap-4 mt-4">
       <a href="mailto:vedantpatelvp04@gmail.com" className="flex items-center gap-2 text-gray-400 hover:text-green-400 text-sm transition-colors">@ Contact</a>
-      <a href="#" className="flex items-center gap-2 text-gray-400 hover:text-green-400 text-sm transition-colors">{">"} GitHub</a>
-      <a href="#" className="flex items-center gap-2 text-gray-400 hover:text-green-400 text-sm transition-colors">{">"} LinkedIn</a>
+      <a href="https://github.com/Vedant-2-6" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-green-400 text-sm transition-colors">{">"} GitHub</a>
+      <a href="https://linkedin.com/in/vedantpatel" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-green-400 text-sm transition-colors">{">"} LinkedIn</a>
     </div>
   </motion.div>
 );
